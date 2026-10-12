@@ -1,0 +1,4 @@
+# temp_site
+Static plaintext test site.
+Main page: ./index.html
+Inspection: ./inspection.json

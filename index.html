@@ -1,0 +1,21 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CardspaceExplorer Bridge</title>
+<style>
+body{font:15px/1.45 system-ui,sans-serif;max-width:1100px;margin:2rem auto;padding:0 1rem;background:#111;color:#ddd}pre{white-space:pre-wrap;background:#1b1b1b;padding:1rem;border-radius:8px;overflow:auto}a{color:#9cf}.muted{opacity:.7}
+</style>
+<h1>CardspaceExplorer Bridge</h1>
+<p class="muted">Read-only published inspection snapshot. This site is not CardspaceExplorer authority.</p>
+<p><a href="/inspection.json">inspection.json</a></p>
+<pre id="out">loading…</pre>
+<script>
+async function refresh(){
+  try{
+    const r=await fetch('/inspection.json',{cache:'no-store'});
+    const j=await r.json();
+    document.querySelector('#out').textContent=JSON.stringify(j,null,2);
+  }catch(e){document.querySelector('#out').textContent=String(e)}
+}
+refresh(); setInterval(refresh,3000);
+</script>
